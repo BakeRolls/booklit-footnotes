@@ -1,0 +1,9 @@
+<ol>
+	{{range $i, $note := .Content}}
+		<li>
+			<a name="fn-{{$i}}"></a>
+			{{$note | render}}
+			<sup><a href="#fnref-{{$i}}">↩</a></sup>
+		</li>
+	{{end}}
+</ol>
