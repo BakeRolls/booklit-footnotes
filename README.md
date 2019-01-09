@@ -1,4 +1,4 @@
-This is a simple plugin for the static site generator [Booklit](https://vito.github.io/booklit/) that adds support for footnotes. As in LaTeX, use `\footnote` to define and `\footnotemark` to display them. Each call of `\footnote` will add its argument to a global list of notes (which is a bad idea). `\footnotemark` prints and empties the list.
+This is a simple plugin for the static site generator [Booklit](https://vito.github.io/booklit/) that adds support for footnotes. As in LaTeX, use `\footnote` to define and `\footnotemark` to display them. Each call of `\footnote` will add its argument to a list of notes. `\footnotemark` prints and empties the list.
 
 To use it, copy both files inside `html` into your theme folder and add the plugin to the plugin list:
 

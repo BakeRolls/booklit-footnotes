@@ -11,26 +11,27 @@ func init() {
 }
 
 func NewPlugin(section *booklit.Section) booklit.Plugin {
-	return &Plugin{section}
+	return &Plugin{section: section}
 }
 
-type Plugin struct{ section *booklit.Section }
-
-var notes []booklit.Content
+type Plugin struct {
+	section *booklit.Section
+	notes   []booklit.Content
+}
 
 func (plugin *Plugin) Footnote(note booklit.Content) booklit.Content {
-	notes = append(notes, note)
+	plugin.notes = append(plugin.notes, note)
 	return booklit.Styled{
 		Style:   booklit.Style("footnote"),
-		Content: booklit.String(strconv.Itoa(len(notes) - 1)),
+		Content: booklit.String(strconv.Itoa(len(plugin.notes) - 1)),
 	}
 }
 
 func (plugin *Plugin) Footnotemark() booklit.Content {
 	body := booklit.Styled{
 		Style:   booklit.Style("footnotes"),
-		Content: booklit.Sequence(notes),
+		Content: booklit.Sequence(plugin.notes),
 	}
-	notes = []booklit.Content{}
+	plugin.notes = nil
 	return body
 }
